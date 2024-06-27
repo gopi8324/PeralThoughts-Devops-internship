@@ -1,0 +1,30 @@
+name: CI/CD Pipeline for Strapi
+
+on:
+  push:
+    branches:
+      - gopi
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Build Strapi application
+        run: npm run 
+
+      - name: Test Strapi application
+        run: npm test 
+      - name: run strapi application
+        run: |
+          cd github.com &&
+          npm run start 
+      

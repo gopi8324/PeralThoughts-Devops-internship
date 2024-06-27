@@ -22,5 +22,8 @@ jobs:
         run: npm run 
 
       - name: start Strapi application
-        run: npm run 
+        run: npm run
+        
+      - name: deploy
+        run: strapi deploy
       

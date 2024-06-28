@@ -23,5 +23,3 @@ jobs:
 
       - name: start Strapi application
         run: npm run
-      - name: strapi to develop
-        run:  npm run develop

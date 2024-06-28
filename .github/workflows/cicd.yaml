@@ -19,7 +19,7 @@ jobs:
           node-version: '20'
 
       - name: Build Strapi application
-        run: npm run 
+        run: npm test
 
       - name: start Strapi application
-        run: npm start
+        run: npm run

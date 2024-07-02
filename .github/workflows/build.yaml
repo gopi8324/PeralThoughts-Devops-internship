@@ -1,1 +1,32 @@
 
+name: Strapi CI/CD
+
+on:
+  push:
+    branches:
+      - gopi
+  pull_request:
+    branches:
+      - gopi
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install Strapi dependencies
+        run: npm install
+
+      - name: Build Strapi project
+        run: npm run build
+
+      - name: Restart PM2 process
+        run: pm2 restart ecosystem.config.js --env production

@@ -27,6 +27,3 @@ jobs:
 
       - name: Build Strapi project
         run: npm run build
-
-      - name: Restart PM2 process
-        run: pm2 restart ecosystem.config.js --env production

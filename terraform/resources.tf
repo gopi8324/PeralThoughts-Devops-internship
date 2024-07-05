@@ -84,7 +84,6 @@ resource "aws_instance" "slim" {
   vpc_security_group_ids      = [aws_security_group.all.id]
   subnet_id                   = aws_subnet.web[0].id
   key_name                    = var.web_instance_info.key_name
-  vpc_security_group_ids = [aws_security_group.all.id]
   tags = {
     Name = var.web_instance_info.name
   }

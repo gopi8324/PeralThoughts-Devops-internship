@@ -10,9 +10,6 @@ jobs:
   Docker:
     name: "Dockerfile"
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: Dockerfile
 
     steps:
       - name: Checkout repository

@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: docker image build
-        run: docker image -t strapi:1.0 .
+        run: docker image build -t strapi:1.0 .
 
       - name: docker container run
         run: docker container run --name strapi -d -P strapi:1.0

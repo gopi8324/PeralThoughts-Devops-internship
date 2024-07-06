@@ -1,23 +1,23 @@
 network_info = {
   name = "ntier"
   createdby = "Gopi"
-  cidr = "192.168.0.0/16"
+  cidr = "192.168.0.0/21"
 }
 public_subnets = [{
   name = "web1"
-  az   = "ap-south-1a"
+  az   = "us-west-1b"
   cidr = "192.168.0.0/24"
   }, 
   {
   name = "web2"
-  az   = "ap-south-1b"
+  az   = "us-west-1c"
   cidr = "192.168.1.0/24"
   }
 ]
 private_subnet = [{
   name = "db1"
   cidr = "192.168.2.0/24"
-  az   = "ap-south-1a"
+  az   = "us-west-1b"
   }
 ]
 security_group = [ {
@@ -53,14 +53,20 @@ security_group_info = {
       description = "open for strapi"
     }
   ]
-  outbound_rules   = []
+   outbound_rules = [{
+    cidr = "0.0.0.0/0"
+    from_port = 0
+    protocol = "-1"
+    to_port = 0
+    description = "open all"
+   }]
   allow_all_egress = true
 }
 
 web_instance_info = {
   name              = "web"
-  size              = "t2.micro"
-  ami               = "ami-0f58b397bc5c1f2e8"
+  size              = "t2.small"
+  ami               = "ami-0ff591da048329e00"
   subnet_id         = ""
   security_group_id = ""
   key_name          = "slimk"

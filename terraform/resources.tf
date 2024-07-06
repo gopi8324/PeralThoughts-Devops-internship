@@ -40,11 +40,9 @@ resource "aws_vpc_security_group_ingress_rule" "all" {
   to_port     = var.security_group_info.inbound_rules[count.index].port
   description = var.security_group_info.inbound_rules[count.index].description
 }
-resource "aws_vpc_security_group_ingress_rule" "allow" {
+resource "aws_vpc_security_group_egress_rule" "allow" {
   security_group_id = aws_security_group.all.id
-
   count = length(var.security_group_info.outbound_rules)
-
   cidr_ipv4   = var.security_group_info.outbound_rules[count.index].cidr
   from_port   = var.security_group_info.outbound_rules[count.index].from_port
   ip_protocol = var.security_group_info.outbound_rules[count.index].protocol
@@ -87,9 +85,9 @@ resource "aws_instance" "slim" {
   tags = {
     Name = var.web_instance_info.name
   }
-  user_data = file("install.sh")
-   provisioner "remote-exec" {
-    script = "install.sh"
-   }
+  user_data                   = file("install.sh")
+  user_data_replace_on_change = true
+
+
 
 }
